@@ -3,7 +3,7 @@ import config from '../config';
 
 
 const ProxyCalls = {
-    getFromGreenThumbApi: (term, location) => {
+    getFromFindRestaurantsApi: (term, location) => {
         const URL = 'http://localhost:8000/' + `?` + `term=${term}` +'&'+ `location=${location}`;
         return fetch(URL, {
             headers: {

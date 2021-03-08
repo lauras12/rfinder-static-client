@@ -3,9 +3,15 @@ import STORE from './dummyData';
 
 const FindContext = React.createContext({
     list: [],
+    users: [],
+    folders: [],
+    reviews: [],
     setList: () => { },
     addFolder: () => { },
     addPlaceToFolder: () => { },
+    addReview: () => { },
+    sortReviews: [],
+
 })
 export default FindContext;
 
@@ -15,13 +21,13 @@ export class FindContextProvider extends React.Component {
         this.state = {
             list: [],
             users: STORE.users,
-            folders: STORE.folders
+            folders: STORE.folders,
+            reviews: STORE.reviews,
+            sortReviews: [],
         }
     }
-    
 
     setList = (data) => {
-        console.log(data, 'CONTEXT')
         this.setState({
             list: data,
         })
@@ -40,18 +46,42 @@ export class FindContextProvider extends React.Component {
         pickedFolder.savedPlacesIds = [...pickedFolder.savedPlacesIds, id]
     }
 
+    addReview = (review) => {
+        console.log(review, 'REVIEW IN CONTEXT')
+        this.setState({
+            reviews: [...this.state.reviews, review]
+        })
+    }
+
+    reviewCitySort = (city) => {
+        let reviews = this.state.reviews.filter(rev => {
+            console.log(rev.placeCity, city, rev)
+            return rev.placeCity.toLowerCase() === city.toLowerCase()
+        })
+        console.log(reviews)
+        this.setState({
+            sortReviews: reviews,
+        })
+    }
     render() {
         console.log(this.state)
         const contextValue = {
             list: this.state.list,
+            users: this.state.users,
+            folders: this.state.folders,
+            reviews: this.state.reviews,
+            sortReviews: this.state.sortReviews,
             setList: this.setList,
             addFolder: this.addFolder,
             addPlaceToFolder: this.addPlaceToFolder,
+            addReview: this.addReview,
+            reviewCitySort: this.reviewCitySort,
         }
         return (
             <FindContext.Provider value={contextValue} >
                 {this.props.children}
             </FindContext.Provider >
+
         )
     }
 }

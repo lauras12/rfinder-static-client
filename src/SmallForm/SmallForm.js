@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ProxyCalls from '../Services/ProxyCalls'
 import FindContext from '../Context';
@@ -19,10 +18,10 @@ constructor(){
         const location = this.state.city;
         const term = 'coffee';
         
-        ProxyCalls.getFromRestaurantFinderApi(term, location)
+        ProxyCalls.getFromFindRateApi(term, location)
         .then(data => {
-            console.log(this.context)
             this.context.setList(data.businesses)
+            this.props.history.push(`/list/${location}`)
         })
         .catch(err => {
             this.setState({
@@ -47,6 +46,7 @@ constructor(){
     }
 
     render(){
+        console.log(this.context.list)
         return (
             <div>
                 <form onSubmit={this.handleFormSubmit}>

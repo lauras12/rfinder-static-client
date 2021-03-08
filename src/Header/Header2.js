@@ -6,7 +6,7 @@ export default function Header2(props) {
         <div>
             <Link to='/'>
             <h1>
-                GREEN thumbsUP
+                Find Restaurants
             </h1>
             </Link>
         </div>

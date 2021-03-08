@@ -10,4 +10,4 @@ export default function Nav(props) {
             <Link to={'/register'}>Register</Link>
         </div>
     )
-} 
+}
