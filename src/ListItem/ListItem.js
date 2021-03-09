@@ -12,7 +12,7 @@ export default function ListItem(props) {
             <p>{props.location.zip_code}</p>
             <p>{props.phone}</p>
             <p>{props.price}</p>
-            <img src={props.img} />
+            <img src={props.img} alt="img" />
             <a href={`${props.website}`}><h2>Visit</h2></a>
             {props.rating}
             <Link to={`/review/${props.id}`}><button>Create review</button></Link>

@@ -59,7 +59,7 @@ export default class ReviewForm extends React.Component {
                 <p>{currentPlace.location.zip_code}</p>
                 <p>{currentPlace.phone}</p>
                 <p>{currentPlace.price}</p>
-                <img src={currentPlace.image_url} />
+                <img src={currentPlace.image_url} alt="img" />
                 <a href={`${currentPlace.url}`}><h2>Visit</h2></a>
                 {currentPlace.rating}
 
